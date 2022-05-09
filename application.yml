@@ -8,12 +8,6 @@ server:
 
 # embedded database init, supports mysql too trough the 'mysql' spring profile
 spring:
-  datasource:
-    schema: classpath*:db/hsqldb/schema.sql
-    data: classpath*:db/hsqldb/data.sql
-  sleuth:
-    sampler:
-      probability: 1.0
   cloud:
     config:
       # Allow the microservices to override the remote properties with their own System properties or config file
@@ -39,63 +33,3 @@ spring.cloud.refresh.refreshable: false
 
 # Logging
 logging.level.org.springframework: INFO
-
-# Metrics
-management:
-  endpoint:
-    metrics:
-      enabled: true
-    prometheus:
-      enabled: true
-  endpoints:
-    web:
-      exposure:
-        include: '*'
-  metrics:
-    export:
-      prometheus:
-        enabled: true
-
-# Chaos Engineering
----
-spring:
-  config:
-    activate:
-      on-profile: chaos-monkey      
-management.endpoint.chaosmonkey.enabled: true
-chaos:
-  monkey:
-    enabled: true
-    watcher:
-      component: false
-      controller: false
-      repository: false
-      rest-controller: false
-      service: false
-
----
-spring:
-  config:
-    activate:
-      on-profile: mysql
-  datasource:
-    schema: classpath*:db/mysql/schema.sql
-    data: classpath*:db/mysql/data.sql
-    url: jdbc:mysql://${MYSQL_SERVER_FULL_NAME}:3306/${MYSQL_DATABASE_NAME}?useSSL=false
-    username: ${MYSQL_SERVER_ADMIN_LOGIN_NAME}
-    password: ${MYSQL_SERVER_ADMIN_PASSWORD}
-    initialization-mode: ALWAYS
-
----
-spring:
-  profiles: key-vault
-
-MYSQL_SERVER_FULL_NAME: ${MYSQL-SERVER-FULL-NAME}
-MYSQL_DATABASE_NAME: ${MYSQL-DATABASE-NAME}
-MYSQL_SERVER_ADMIN_LOGIN_NAME: ${MYSQL-SERVER-ADMIN-LOGIN-NAME}
-MYSQL_SERVER_ADMIN_PASSWORD: ${MYSQL-SERVER-ADMIN-PASSWORD}
-
-azure:
-  keyvault:
-    enabled: true
-    uri: ${AZURE_KEY_VAULT_URI}

@@ -2,9 +2,6 @@ zuul:
   prefix: /api
   ignoredServices: '*'
   routes:
-    vets-service: /vet/**
-    visits-service: /visit/**
-    customers-service: /customer/**
     api-gateway: /gateway/**
     ecare-appointment-service: /ecare/**
 
@@ -14,6 +11,3 @@ server:
     enabled: true
     mime-types: application/json,text/css,application/javascript
     min-response-size: 2048
-
-# Internationalization
-spring.messages.basename: messages/messages
