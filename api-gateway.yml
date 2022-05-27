@@ -3,6 +3,7 @@ zuul:
   ignoredServices: '*'
   routes:
     api-gateway: /gateway/**
+    auth-service: /auth/**
     ecare-appointment-service: /ecare/**
 
 server:
