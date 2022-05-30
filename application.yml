@@ -9,9 +9,6 @@ server:
 # embedded database init, supports mysql too trough the 'mysql' spring profile
 spring:
   cloud:
-    sleuth:
-      sampler:
-        probability: 1.0
     config:
       # Allow the microservices to override the remote properties with their own System properties or config file
       allow-override: true
