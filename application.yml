@@ -17,8 +17,6 @@ spring:
 
   jpa:
     open-in-view: false
-    hibernate:
-      ddl-auto: none
   jmx:
     enabled: true
 
@@ -44,3 +42,5 @@ eureka:
     fetch-registry: true
   instance:
     hostname: localhost
+allowed:
+  origins: true
