@@ -1,14 +1,17 @@
-zuul:
-  prefix: /api
-  ignoredServices: '*'
-  routes:
-    api-gateway: /gateway/**
-    auth: /auth/**
-    ecare-appointment-service: /ecare/**
-
 server:
   port: 8080
   compression:
     enabled: true
     mime-types: application/json,text/css,application/javascript
     min-response-size: 2048
+
+client:
+  client-id: ephI80bgH88cCS0nAdUEexTZgaIa #Change client-id
+  client-secret: 9yWBvSfhvtWalnrT55QvGVyOe8Ia # Change client-secret
+  post-logout-uri: http://localhost:8080/auth/login
+  scope: openid
+  authorization-grant-type: authorization_code
+  grant-type: password
+
+provider:
+  host: https://localhost:9443
