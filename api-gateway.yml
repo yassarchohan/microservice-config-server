@@ -12,6 +12,8 @@ client:
   scope: openid
   authorization-grant-type: authorization_code
   grant-type: password
+  admin-username: admin
+  admin-password: admin
 
 provider:
   host: https://localhost:9443
