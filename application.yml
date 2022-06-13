@@ -44,3 +44,14 @@ eureka:
     hostname: localhost
 allowed:
   origins: true
+
+#3rd party config
+tibco:
+  credentials:
+    username: tibco
+    password: tibco
+
+crm-gtw:
+  credentials:
+    username: test
+    password: test
